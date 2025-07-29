@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "64671232681",
+    "project_id": "tapcaddie",
+    "storage_bucket": "tapcaddie.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64671232681:android:152ef3f0b21158047a6fb8",
+        "android_client_info": {
+          "package_name": "com.jeddore.tapcaddie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpqsMVOVRtua9soI9CvssdpkUZ_uqg3x8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
