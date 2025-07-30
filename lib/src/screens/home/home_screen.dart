@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Ready to improve your game?',
               style: TextStyle(
                 fontSize: 16,
