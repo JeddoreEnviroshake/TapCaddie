@@ -26,7 +26,11 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 
+
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
 android {
+    namespace "com.enviroshake.tapcaddie"
     compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
@@ -44,8 +48,8 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.yourcompany.tapcaddie"
-        minSdkVersion 21  // Required for NFC and modern Firebase features
+        applicationId "com.enviroshake.tapcaddie"
+        minSdkVersion 21
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -56,6 +60,7 @@ android {
         release {
             signingConfig signingConfigs.debug
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -67,17 +72,17 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    
-    // Firebase
-    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+
+    // Firebase BoM (Updated version)
+    implementation platform('com.google.firebase:firebase-bom:34.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
-    
+
     // Google Play Services
     implementation 'com.google.android.gms:play-services-auth:20.7.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
-    
+
     // MultiDex support
     implementation 'androidx.multidex:multidex:2.0.1'
 }
