@@ -135,8 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
               'Ready to improve your game?',
               style: TextStyle(
                 fontSize: 16,
-                color: AppTheme.pureWhite,
-                opacity: 0.9,
+                color: AppTheme.pureWhite.withOpacity(0.9),
               ),
             ),
           ],

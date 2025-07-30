@@ -85,11 +85,11 @@ class AnalyticsProvider extends ChangeNotifier {
         clubId: shots.first.clubId,
         clubName: shots.first.clubName,
         totalShots: 0,
-        averageDistance: 0,
-        maxDistance: 0,
-        minDistance: 0,
-        fairwayHitRate: 0,
-        greenInRegulationRate: 0,
+        averageDistance: 0.0,
+        maxDistance: 0.0,
+        minDistance: 0.0,
+        fairwayHitRate: 0.0,
+        greenInRegulationRate: 0.0,
         distances: [],
       );
     }
@@ -106,11 +106,11 @@ class AnalyticsProvider extends ChangeNotifier {
       clubId: shots.first.clubId,
       clubName: shots.first.clubName,
       totalShots: shots.length,
-      averageDistance: distances.isNotEmpty ? distances.reduce((a, b) => a + b) / distances.length : 0,
-      maxDistance: distances.isNotEmpty ? distances.reduce((a, b) => a > b ? a : b) : 0,
-      minDistance: distances.isNotEmpty ? distances.reduce((a, b) => a < b ? a : b) : 0,
-      fairwayHitRate: shots.isNotEmpty ? fairwayHits / shots.length : 0,
-      greenInRegulationRate: shots.isNotEmpty ? greenHits / shots.length : 0,
+      averageDistance: distances.isNotEmpty ? distances.reduce((a, b) => a + b) / distances.length : 0.0,
+      maxDistance: distances.isNotEmpty ? distances.reduce((a, b) => a > b ? a : b) : 0.0,
+      minDistance: distances.isNotEmpty ? distances.reduce((a, b) => a < b ? a : b) : 0.0,
+      fairwayHitRate: shots.isNotEmpty ? fairwayHits / shots.length : 0.0,
+      greenInRegulationRate: shots.isNotEmpty ? greenHits / shots.length : 0.0,
       distances: distances,
     );
   }
@@ -141,14 +141,15 @@ class AnalyticsProvider extends ChangeNotifier {
     ).toList();
     
     final fairwayHits = _userShots.where((shot) => shot.result == ShotResult.fairway).length;
-    final fairwayHitRate = fairwayShots.isNotEmpty ? fairwayHits / fairwayShots.length : 0;
+    final fairwayHitRate =
+        fairwayShots.isNotEmpty ? fairwayHits / fairwayShots.length : 0.0;
     
     // Calculate GIR (Green in Regulation) percentage
     final girShots = _userShots.where((shot) => shot.result == ShotResult.green).length;
     final totalApproachShots = _userShots.where((shot) => 
       shot.shotNumber <= 2 // Approximate approach shots
     ).length;
-    final girRate = totalApproachShots > 0 ? girShots / totalApproachShots : 0;
+    final girRate = totalApproachShots > 0 ? girShots / totalApproachShots : 0.0;
     
     _performanceStats = PerformanceStats(
       totalRounds: completedRounds.length,
@@ -156,8 +157,8 @@ class AnalyticsProvider extends ChangeNotifier {
       bestScore: scores.reduce((a, b) => a < b ? a : b),
       worstScore: scores.reduce((a, b) => a > b ? a : b),
       averageScoreToPar: scoresToPar.reduce((a, b) => a + b) / scoresToPar.length,
-      fairwayHitRate: fairwayHitRate,
-      greenInRegulationRate: girRate,
+      fairwayHitRate: fairwayHitRate.toDouble(),
+      greenInRegulationRate: girRate.toDouble(),
       totalShots: _userShots.length,
       averageStrokesPerRound: _userShots.length / completedRounds.length,
     );

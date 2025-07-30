@@ -176,6 +176,7 @@ class LocationService {
         timestamp: latest.timestamp,
         accuracy: latest.accuracy,
         altitude: latest.altitude,
+        altitudeAccuracy: latest.altitudeAccuracy,
         heading: latest.heading,
         speed: latest.speed,
         speedAccuracy: latest.speedAccuracy,
