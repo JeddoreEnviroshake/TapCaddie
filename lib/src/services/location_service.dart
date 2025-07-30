@@ -178,6 +178,7 @@ class LocationService {
         altitude: latest.altitude,
         altitudeAccuracy: latest.altitudeAccuracy,
         heading: latest.heading,
+        headingAccuracy: latest.headingAccuracy,
         speed: latest.speed,
         speedAccuracy: latest.speedAccuracy,
       ));
